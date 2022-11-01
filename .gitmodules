@@ -1,0 +1,3 @@
+[submodule "extern/UEB"]
+	path = extern/UEB
+	url = https://github.com/dtarb/UEB
