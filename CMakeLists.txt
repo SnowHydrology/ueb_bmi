@@ -7,7 +7,14 @@ project (bmi-ueb-cxx CXX)
 message("--   bmicxx include - ${BMICXX_INCLUDE_DIRS}")
 include_directories(${BMICXX_INCLUDE_DIRS})
 
+#Tell cmake we are using UEBlib
+add_library(UEBmilib "")
+#tell cmake where to find the UEBlib build info
+add_subdirectory(extern)
+
 add_subdirectory (src)
 #add_subdirectory (testing)
+
+target_link_libraries(UEBmilib PUBLIC bmiuebcxx)
 
 include (CTest)
