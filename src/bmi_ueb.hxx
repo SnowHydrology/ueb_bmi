@@ -1,11 +1,11 @@
-#ifndef BMI_HEAT_H_INCLUDED
-#define BMI_HEAT_H_INCLUDED
+#ifndef BMI_UEB_H_INCLUDED
+#define BMI_UEB_H_INCLUDED
 
 #include <string>
 #include <iostream>
 
-#include <bmi.hxx>
-#include "heat.hxx"
+#include "bmi.hxx"
+#include "uebpgdecls.h"
 
 
 class NotImplemented : public std::logic_error {
@@ -14,11 +14,24 @@ class NotImplemented : public std::logic_error {
 };
 
 
-class BmiHeat : public bmi::Bmi {
+class BmiUeb : public bmi::Bmi {
   public:
-    BmiHeat() {
-      this->input_var_names[0] = "plate_surface__temperature";
-      this->output_var_names[0] = "plate_surface__temperature";
+    BmiUeb() {
+      this->input_var_names[0]  = "Prec";    // Precipitation (m/h)
+      this->input_var_names[1]  = "Ta";      // Air temperature (°C)
+      this->input_var_names[2]  = "Tmin";    // Min air temperature (°C)
+      this->input_var_names[3]  = "Tmax";    // Max air temperature (°C)
+      this->input_var_names[4]  = "V";       // Wind speed (m/s)
+      this->input_var_names[5]  = "RH";      // Relative humidity (-)
+      this->input_var_names[6]  = "Vp";      // Vapor pressure (?)
+      this->input_var_names[7]  = "AP";      // Air pressure (?)
+      this->input_var_names[8]  = "Qsi";     // Incoming shortwave radiation (kJ/m2/hr)
+      this->input_var_names[9]  = "Qli";     // Incoming longwave radiation (kJ/m2/hr)
+      this->input_var_names[10] = "Qnet";    // Net radiation (kJ/m2/hr)
+      this->input_var_names[11] = "Qg";      // Ground heat flux (kJ/m2/hr)
+      this->input_var_names[12] = "Snowalb"; // Snow albedo (-)
+      this->output_var_names[0] = "SWIT";    // Total outflow (rainfall + snowmelt) (m/h)
+      this->output_var_names[1] = "Ws";      // Snow water equivalent (m)
     };
 
     void Initialize(std::string config_file);
@@ -74,11 +87,11 @@ class BmiHeat : public bmi::Bmi {
     void GetGridNodesPerFace(const int grid, int *nodes_per_face);
 
   private:
-    heat::Heat _model;
-    static const int input_var_name_count = 1;
-    static const int output_var_name_count = 1;
+    ueb::Ueb _model;
+    static const int input_var_name_count = 13;
+    static const int output_var_name_count = 2;
 
-    std::string input_var_names[2];
+    std::string input_var_names[13];
     std::string output_var_names[2];
 };
 
