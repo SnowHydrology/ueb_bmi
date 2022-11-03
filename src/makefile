@@ -11,9 +11,11 @@ LDFLAGS = -lnetcdf -lhdf5_hl -lhdf5 -lcurl -lm -lz -ldl
 #LDFLAGS = -lpnetcdf -lnetcdf -lhdf5_hl -lhdf5 -lm -lz -ldl -lmpi -lmpicxx
 INCDIRS = -I/usr/local/include
 TARGET = uebpar
-CXX_SRCS = main.cpp canopy.cpp matrixnvector.cpp ncfunctions.cpp snowdgtv.cpp snowdv.cpp snowxv.cpp uebdecls.cpp uebinputs.cpp
+CXX_SRCS = main.cpp canopy.cpp matrixnvector.cpp ncfunctions.cpp snowdgtv.cpp snowdv.cpp snowxv.cpp uebdecls.cpp uebinputs.cpp bmi_ueb.cxx
+CXX_SRCS_del =      canopy.cpp matrixnvector.cpp ncfunctions.cpp snowdgtv.cpp snowdv.cpp snowxv.cpp uebdecls.cpp uebinputs.cpp
 #CXX_SRCS = main.cpp ../extern/UEB/canopy.cpp ../extern/UEB/matrixnvector.cpp ../extern/UEB/ncfunctions.cpp ../extern/UEB/snowdgtv.cpp ../extern/UEB/snowdv.cpp ../extern/UEB/snowxv.cpp ../extern/UEB/uebdecls.cpp ../extern/UEB/uebinputs.cpp
 OBJS = $(CXX_SRCS:.cpp=.o)
+OBJS_del = $(CXX_SRCS_del:.cpp=.o)
 
 $(TARGET) : $(OBJS)
 	$(MPICXX) $(LINKFLAGS) -o $@ $^ $(LIBDIRS) $(LDFLAGS)
@@ -23,4 +25,4 @@ $(TARGET) : $(OBJS)
 	$(MPICXX) $(CXXFLAGS) $(INCDIRS) -c $<
 
 clean :
-	$(RM) $(OBJS) $(TARGET)
+	$(RM) $(OBJS_del) $(TARGET)

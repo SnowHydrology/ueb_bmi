@@ -1,12 +1,22 @@
 
 #include "uebpgdecls.h"
+#include "bmi.hxx"
+#include "bmi_ueb.hxx"
 //#include <queue>
 #pragma warning(disable : 4996)
 using namespace std;
 
 int main(int argc, char* argv[])
 {
-	float timeControl = 0.0, timeWS = 0.0, timeSitestate = 0.0, timeTSArrays = 0.0, timeParam = 0.0, timeParamSiteInptcontrol = 0.0, timeModelRun = 0.0;
+    BmiUeb model;
+    {
+        std::string model_name;
+
+        model_name = model.GetComponentName();
+        printf("%s\n",model_name.c_str());
+    }
+
+    float timeControl = 0.0, timeWS = 0.0, timeSitestate = 0.0, timeTSArrays = 0.0, timeParam = 0.0, timeParamSiteInptcontrol = 0.0, timeModelRun = 0.0;
 	float** outvarArray; //= new float*[70]; //[70];
 	float*** aggoutvarArray;
 	float ***ncoutArray;

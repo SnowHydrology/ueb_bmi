@@ -4,9 +4,8 @@
 #include <string>
 #include <iostream>
 
-#include "bmi.hxx"
 #include "uebpgdecls.h"
-
+#include "bmi.hxx"
 
 class NotImplemented : public std::logic_error {
   public:
@@ -87,7 +86,7 @@ class BmiUeb : public bmi::Bmi {
     void GetGridNodesPerFace(const int grid, int *nodes_per_face);
 
   private:
-    ueb::Ueb _model;
+//    ueb::Ueb _model;
     static const int input_var_name_count = 13;
     static const int output_var_name_count = 2;
 
