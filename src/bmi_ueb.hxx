@@ -90,8 +90,8 @@ class BmiUeb : public bmi::Bmi {
     static const int input_var_name_count = 13;
     static const int output_var_name_count = 2;
 
-    std::string input_var_names[13];
-    std::string output_var_names[2];
+    std::string input_var_names[input_var_name_count];
+    std::string output_var_names[output_var_name_count];
 };
 
 #endif

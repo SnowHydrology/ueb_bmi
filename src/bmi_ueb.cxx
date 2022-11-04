@@ -362,24 +362,24 @@ GetOutputItemCount()
 std::vector<std::string> BmiUeb::
 GetInputVarNames()
 {
-//  std::vector<std::string> names;
-//
-//  for (int i=0; i<this->input_var_name_count; i++)
-//    names.push_back(this->input_var_names[i]);
-//
-//  return names;
+  std::vector<std::string> names;
+
+  for (int i=0; i<this->input_var_name_count; i++)
+    names.push_back(this->input_var_names[i]);
+
+  return names;
 }
 
 
 std::vector<std::string> BmiUeb::
 GetOutputVarNames()
 {
-//  std::vector<std::string> names;
-//
-//  for (int i=0; i<this->output_var_name_count; i++)
-//    names.push_back(this->output_var_names[i]);
-//
-//  return names;
+  std::vector<std::string> names;
+
+  for (int i=0; i<this->output_var_name_count; i++)
+    names.push_back(this->output_var_names[i]);
+
+  return names;
 }
 
 

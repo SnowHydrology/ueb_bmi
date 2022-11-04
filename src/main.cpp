@@ -9,11 +9,32 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     BmiUeb model;
+    
+    // Test GetComponentName
     {
         std::string model_name;
 
         model_name = model.GetComponentName();
         printf("%s\n",model_name.c_str());
+    }
+    // Test model info functions
+    {
+      int number_of_names;
+      std::vector<std::string> names;
+
+      number_of_names = model.GetInputItemCount();
+      fprintf (stdout, "Number of input names: %d\n", number_of_names);
+      names = model.GetInputVarNames();
+      for (int i=0; i<number_of_names; i++)
+        fprintf (stdout, "%s\n", names[i].c_str());
+      fprintf (stdout, "\n");
+
+      number_of_names = model.GetOutputItemCount();
+      fprintf (stdout, "Number of output names: %d\n", number_of_names);
+      names = model.GetOutputVarNames();
+      for (int i=0; i<number_of_names; i++)
+        fprintf (stdout, "%s\n", names[i].c_str());
+      fprintf (stdout, "\n");
     }
 
     float timeControl = 0.0, timeWS = 0.0, timeSitestate = 0.0, timeTSArrays = 0.0, timeParam = 0.0, timeParamSiteInptcontrol = 0.0, timeModelRun = 0.0;
